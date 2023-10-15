@@ -1,3 +1,5 @@
+https://www.codingninjas.com/studio/problems/algorithm-to-find-best-insert-position-in-sorted-array_839813?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries
+
 int searchInsert(vector<int>& arr, int m)
 {
 	int s=0;
