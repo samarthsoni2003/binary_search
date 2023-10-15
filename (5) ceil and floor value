@@ -1,0 +1,32 @@
+pair<int, int> getFloorAndCeil(vector<int> &a, int n, int x) {
+	int s=0;
+	int celling=-1;
+	int e=n-1;
+	while(s<=e){
+	int mid=s+((e-s)/2);
+	if(a[mid]>=x){
+		celling=a[mid];
+		e=mid-1;
+	}
+	else{
+		s=mid+1;
+		}
+	}
+
+	s=0;
+	e=n-1;
+	int floor=-1;
+	while(s<=e){
+		int mid=s+((e-s)/2);
+		if(a[mid]<=x){
+			floor=a[mid];
+			s=mid+1;
+		}
+		else{
+			e=mid-1;
+		}
+	}
+
+	pair<int,int> p1(floor,celling);
+	return p1;
+}
