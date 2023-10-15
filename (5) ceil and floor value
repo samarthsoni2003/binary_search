@@ -1,3 +1,5 @@
+https://www.codingninjas.com/studio/problems/ceiling-in-a-sorted-array_1825401
+
 pair<int, int> getFloorAndCeil(vector<int> &a, int n, int x) {
 	int s=0;
 	int celling=-1;
