@@ -1,6 +1,5 @@
 https://www.codingninjas.com/studio/problems/rotated-array_1093219?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries
 
-
 int findMin(vector<int>& arr)
 {
 	int s=0;
@@ -8,6 +7,14 @@ int findMin(vector<int>& arr)
 	int min=INT_MAX;
 	while(s<=e){
 		int mid=s+((e-s)/2);
+
+		// optional to add 
+		if(arr[s]<=arr[e]){
+			if(arr[s]<min){
+				min=arr[s];
+				break;
+			}
+		}
 		if(arr[s]<=arr[mid]){
 			if(arr[s]<min){
 				min=arr[s];
