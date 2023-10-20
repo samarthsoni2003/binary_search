@@ -33,12 +33,10 @@ runtime speed is better of mine
 striver approach
 int floorSqrt(int n)
 {
-    if(n>=1 && n<=3){
+    if(n==1){
         return 1;
     }
-    if(n>=4 && n<=8){
-        return 2;
-    }
+    unsigned long long int ans=0;
     unsigned long long int i=n/2;
     unsigned long long int j=0;
     while(i>=j){
@@ -51,9 +49,10 @@ int floorSqrt(int n)
             i=mid-1;
         }
         else{
+            ans=mid;
             j=mid+1;
         }
     }
-    return i;
+    return ans;
 }
 
