@@ -1,0 +1,59 @@
+https://www.codingninjas.com/studio/problems/square-root-integral_893351?leftPanelTab=1&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries
+
+my approach
+int floorSqrt(int n)
+{
+
+    if(n>=1 && n<=3){
+        return 1;
+    }
+    if(n>=4 && n<=8){
+        return 2;
+    }
+    unsigned long long int i=n/2;
+    unsigned long long int j=0;
+    while(i-j!=1){
+        unsigned long long int mid=j+((i-j)/2);
+        unsigned long long int midsq=mid*mid;
+        if(midsq==n){
+            return mid;
+        }
+        else if(midsq>n){
+            i=mid;
+        }
+        else{
+            j=mid;
+        }
+    }
+    return j;
+}
+
+runtime speed is better of mine
+
+striver approach
+int floorSqrt(int n)
+{
+    if(n>=1 && n<=3){
+        return 1;
+    }
+    if(n>=4 && n<=8){
+        return 2;
+    }
+    unsigned long long int i=n/2;
+    unsigned long long int j=0;
+    while(i>=j){
+        unsigned long long int mid=j+((i-j)/2);
+        unsigned long long int midsq=mid*mid;
+        if(midsq==n){
+            return mid;
+        }
+        else if(midsq>n){
+            i=mid-1;
+        }
+        else{
+            j=mid+1;
+        }
+    }
+    return i;
+}
+
