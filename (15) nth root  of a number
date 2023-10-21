@@ -1,0 +1,30 @@
+https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries&leftPanelTab=1
+
+int NthRoot(int n, int m) 
+{
+    if(m==1){
+      return 1;
+    }
+    int i=1;
+    unsigned long long int j=m/2;
+    while(i<=j){
+      unsigned long long int mid=i+((j-i)/2);
+      unsigned long long int midroot=1;
+      for(int k=0;k<n;k++){
+        midroot*=mid;
+        if(midroot>m){
+          break;
+        }
+      }
+      if(midroot==m){
+        return mid;
+      }
+      else if(midroot>m){
+        j=mid-1;
+      }
+      else{
+        i=mid+1;
+      }
+    }
+      return -1;
+}
