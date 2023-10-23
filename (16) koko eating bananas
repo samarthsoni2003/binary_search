@@ -1,0 +1,44 @@
+https://www.codingninjas.com/studio/problems/minimum-rate-to-eat-bananas_7449064?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries&leftPanelTab=1
+
+#include<bits/stdc++.h>
+int findmax(vector<int> v,int n){
+    int maxi=INT_MIN;
+    for(int i=0;i<n;i++){
+        if(maxi<v[i]){
+            maxi=v[i];
+        }
+    }
+    return maxi;
+}
+
+int calchours(vector<int> v,int n,int num){
+    unsigned long long int totalsum=0;
+    for(int i=0;i<n;i++){
+            int devide=v[i]/num;
+            if(v[i]%num==0){
+                totalsum+=devide;
+            }
+            else{
+                devide++;
+                totalsum+=devide;
+            }
+            }
+    return totalsum;
+}
+
+int minimumRateToEatBananas(vector<int> v, int h) {
+    int n=v.size();
+    int s=1;
+    int e=findmax(v,n);
+    while(s<=e){
+        int mid=s+((e-s)/2);
+        unsigned long long int ans=calchours(v,n,mid);
+        if(ans<=h){
+            e=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+    }
+    return s;
+}
