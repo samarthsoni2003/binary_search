@@ -1,0 +1,45 @@
+https://www.codingninjas.com/studio/problems/smallest-divisor-with-the-given-limit_1755882?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries&leftPanelTab=1
+
+#include<bits/stdc++.h>
+
+int findmax(vector<int> arr,int n){
+	int maxi=INT_MIN;
+	for(int i=0;i<n;i++){
+		if(maxi<arr[i]){
+			maxi=arr[i];
+		}
+	}
+	return maxi;
+}
+
+int totalsum(vector<int> arr,int limit,int n,int divisor){
+	int total=0;
+	for(int i=0;i<n;i++){
+		int devide=arr[i]/divisor;
+		if(arr[i]%divisor==0){
+			total+=devide;
+		}
+		else{
+			total+=devide+1;
+		}
+	}
+	return total;
+}
+
+int smallestDivisor(vector<int>& arr, int limit)
+{
+	int n=arr.size();
+	int s=1;
+	int e=findmax(arr,n);
+	while(s<=e){
+		int mid=s+((e-s)/2);
+		int soln=totalsum(arr,limit,n,mid);
+		if(soln<=limit){
+			e=mid-1;
+		}
+		else{
+			s=mid+1;
+		}
+	}
+	return s;
+}
