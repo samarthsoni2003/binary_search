@@ -1,0 +1,51 @@
+https://www.codingninjas.com/studio/problems/capacity-to-ship-packages-within-d-days_1229379?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries&leftPanelTab=1
+
+int totalsumofvector(vector<int> &weights, int n){
+    unsigned long long int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=weights[i];
+    }
+    return sum;
+}
+
+int checkans(vector<int> &weights,int n,int d,int num){
+    unsigned long long int weightsum=0;
+    int days=1;
+    int i=0;
+    while(i<n){
+        if(weights[i]>num){
+            days=d+1;
+            break;
+        }
+            if(weightsum+weights[i]>num){
+                days++;
+                if(days>d){
+                    return days;
+                }
+                weightsum=0;
+            }
+            else{
+                weightsum+=weights[i];
+                i++;
+            }
+    }
+    return days;
+}
+
+int leastWeightCapacity(vector<int> &weights, int d)
+{
+    int n=weights.size();
+    int s=1;
+    unsigned long long int e=totalsumofvector(weights,n);
+    while(s<=e){
+        int mid=s+((e-s)/2);
+       unsigned long long int soln=checkans(weights,n,d,mid);
+        if(soln<=d){
+            e=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+    }
+    return s;
+}
