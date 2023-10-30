@@ -1,0 +1,18 @@
+https://www.codingninjas.com/studio/problems/kth-missing-element_893215?utm_source=youtube&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries&leftPanelTab=3
+
+#include<bits/stdc++.h>
+int missingK(vector < int > vec, int n, int k) {
+    int s=0;
+    int e=n-1;
+    while(s<=e){
+        int mid=s+((e-s)/2);
+        int missingnum=vec[mid]-(mid+1);
+        if(k>missingnum){
+            s=mid+1;
+        }
+        else{
+            e=mid-1;
+        }
+    }
+    return s+k;
+}
